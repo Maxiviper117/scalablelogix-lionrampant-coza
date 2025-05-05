@@ -1,55 +1,55 @@
-name: Deploy to GitHub Pages # Define the name of the workflow
+name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: ['main'] # Trigger this workflow on a push event to the main branch
+    branches: [main]
 
 jobs:
   build_site:
-    runs-on: ubuntu-latest # Use the latest Ubuntu runner for this job
+    runs-on: ubuntu-latest
     steps:
-      - name: Checkout # Task to checkout repository content
-        uses: actions/checkout@v4 # Use checkout action version 4
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      - name: Install pnpm # Task to set up the pnpm package manager
-        uses: pnpm/action-setup@v3 # Use pnpm setup action version 3
+      # If you're using pnpm, add this step then change the commands and cache key below to use `pnpm`
+      # - name: Install pnpm
+      #   uses: pnpm/action-setup@v3
+      #   with:
+      #     version: 8
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
         with:
-          version: 8 # Install pnpm version 8
+          node-version: 20
+          cache: npm
 
-      - name: Install Node.js # Task to install Node.js, needed for the build process
-        uses: actions/setup-node@v4 # Use Node.js setup action version 4
-        with:
-          node-version: 22 # Specify Node.js version 22
-          cache: pnpm # Enable caching for pnpm dependencies
+      - name: Install dependencies
+        run: npm install
 
-      - name: Install dependencies # Run dependency installation via pnpm
-        run: pnpm install # Execute the installation command
-
-      - name: build # Task to build the project
+      - name: build
         env:
-          # BASE_PATH: '/${{ github.event.repository.name }}' # Set BASE_PATH using repository name from the event
-          BASE_PATH: '/${{ github.event.repository.name }}' # Set BASE_PATH using repository name from the event
-        run: |
-          npm run build  # Execute the build script defined in package.json
+          BASE_PATH: '/${{ github.event.repository.name }}'
+        run: npm run build
 
-      - name: Upload Artifacts # Upload the compiled build files as an artifact for deployment
-        uses: actions/upload-pages-artifact@v3 # Use the GitHub Pages artifact uploader action version 3
+      - name: Upload Artifacts
+        uses: actions/upload-pages-artifact@v3
         with:
-          path: 'build/' # Specify the build directory to be uploaded
+          # this should match the `pages` option in your adapter-static options
+          path: 'build/'
 
   deploy:
-    needs: build_site # Ensure that the deploy job runs after build_site completes successfully
-    runs-on: ubuntu-latest # Use an Ubuntu runner for the deploy phase
+    needs: build_site
+    runs-on: ubuntu-latest
 
     permissions:
-      pages: write # Grant write access to GitHub Pages for the deployment steps
-      id-token: write # Grant permission to generate an ID token required for deployments
+      pages: write
+      id-token: write
 
     environment:
-      name: github-pages # Define the deployment environment name as github-pages
-      url: ${{ steps.deployment.outputs.page_url }} # Reference the URL output from the deployment step
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
-      - name: Deploy # Task to deploy the artifact to GitHub Pages
-        id: deployment # Assign an ID to this step to reference its outputs later
-        uses: actions/deploy-pages@v4 # Use the GitHub Pages deployment action version 4
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4
