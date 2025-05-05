@@ -28,7 +28,7 @@ jobs:
       - name: build # Task to build the project
         env:
           # BASE_PATH: '/${{ github.event.repository.name }}' # Set BASE_PATH using repository name from the event
-          BASE_PATH: '' # Set BASE_PATH using repository name from the event
+          BASE_PATH: '/${{ github.event.repository.name }}' # Set BASE_PATH using repository name from the event
         run: |
           npm run build  # Execute the build script defined in package.json
 
