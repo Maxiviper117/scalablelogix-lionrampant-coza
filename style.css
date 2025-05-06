@@ -5,7 +5,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: url('abstract-bg.png') no-repeat center center fixed;
+  background: url('abstract-bg.webp') no-repeat center center fixed;
   background-size: cover;
   font-family: 'Segoe UI', Arial, sans-serif;
   color: #fff;
