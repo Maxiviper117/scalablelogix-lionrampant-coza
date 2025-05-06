@@ -1,64 +1,82 @@
+:root {
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+}
+html {
+    scroll-behavior: smooth;
+    background-color: #000;
+}
+
 body {
-  margin: 0;
-  padding: 2rem;
-  min-height: 100dvh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: url('abstract-bg.webp') no-repeat center center fixed;
-  background-size: cover;
-  font-family: 'Segoe UI', Arial, sans-serif;
-  color: #fff;
+    margin: 0;
+    padding: 2rem;
+    min-height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: url("abstract-bg.webp") no-repeat center center fixed;
+    background-size: cover;
+    font-family: "Segoe UI", Arial, sans-serif;
+    color: #fff;
 }
 
 .container {
-  text-align: center;
-  background: rgba(30, 18, 48, 0.75); /* deep purple overlay for contrast */
-  padding: 2rem 3rem;
-  border-radius: 12px;
-  box-shadow: 0 2px 32px 0 rgba(44, 16, 36, 0.4);
-  border: 2px solid rgba(255, 255, 255, 0.08);
+    text-align: center;
+    background: rgba(30, 18, 48, 0.75); /* deep purple overlay for contrast */
+    padding: 2rem 3rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 32px 0 rgba(44, 16, 36, 0.4);
+    border: 2px solid rgba(255, 255, 255, 0.08);
 }
 
 h1 {
-  font-size: clamp(2rem, 5vw, 2.5rem);
-  color: #ffd86b; /* gold/yellow from the image */
-  margin-bottom: 0.5rem;
-  letter-spacing: 0.15em;
-  text-shadow: 0 2px 16px #e85d04, 0 1px 0 #000;
+    font-size: clamp(2rem, 5vw, 2.5rem);
+    color: #ffd86b; /* gold/yellow from the image */
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.15em;
+    text-shadow: 0 2px 16px #e85d04, 0 1px 0 #000;
 }
 
 #subtitle {
-  color: #ffb56b; /* orange/yellow from the image */
-  margin-bottom: 2rem;
-  min-height: 1.2em;
-  text-shadow: 0 1px 8px #e85d04, 0 1px 0 #000;
+    color: #ffb56b; /* orange/yellow from the image */
+    margin-bottom: 2rem;
+    min-height: 1.2em;
+    text-shadow: 0 1px 8px #e85d04, 0 1px 0 #000;
 }
 
 .loader {
-  border: 6px solid #ffb56b;
-  border-top: 6px solid #ffd86b;
-  border-radius: 50%;
-  width: 48px;
-  height: 48px;
-  animation: spin 1s linear infinite;
-  margin: 0 auto;
+    border: 6px solid #ffb56b;
+    border-top: 6px solid #ffd86b;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto;
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 .cursor {
-  display: inline-block;
-  width: 2px;
-  height: 1em;
-  background-color: #ffd86b;
-  margin-left: 2px;
-  animation: blink 0.7s infinite;
+    display: inline-block;
+    width: 2px;
+    height: 1em;
+    background-color: #ffd86b;
+    margin-left: 2px;
+    animation: blink 0.7s infinite;
 }
 
 @keyframes blink {
-  50% { opacity: 0; }
+    50% {
+        opacity: 0;
+    }
 }
