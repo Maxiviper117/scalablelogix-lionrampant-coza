@@ -1,6 +1,3 @@
-html {
-  background-color: #000;
-}
 body {
   margin: 0;
   padding: 2rem;
@@ -8,24 +5,19 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: url('/abstract-bg.webp') no-repeat center center fixed;
+  background: url('abstract-bg.png') no-repeat center center fixed;
   background-size: cover;
   font-family: 'Segoe UI', Arial, sans-serif;
   color: #fff;
 }
 
 .container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   text-align: center;
   background: rgba(30, 18, 48, 0.75); /* deep purple overlay for contrast */
   padding: 2rem 3rem;
   border-radius: 12px;
   box-shadow: 0 2px 32px 0 rgba(44, 16, 36, 0.4);
   border: 2px solid rgba(255, 255, 255, 0.08);
-  min-height: 300px;
 }
 
 h1 {
@@ -69,9 +61,4 @@ h1 {
 
 @keyframes blink {
   50% { opacity: 0; }
-}
-
-.word {
-  white-space: nowrap;
-  display: inline-block;
 }
