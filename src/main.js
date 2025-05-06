@@ -1,11 +1,25 @@
+import "./style.css";
+import gsap from "gsap";
+import { SplitText } from "gsap/SplitText";
+gsap.registerPlugin(SplitText);
+import { TextPlugin } from "gsap/TextPlugin";
+gsap.registerPlugin(TextPlugin);
+
 // Animate the h1 and loader using GSAP
 window.addEventListener("DOMContentLoaded", () => {
-    // Animate the h1
-    gsap.from("h1", {
-        y: -50,
-        opacity: 0,
-        duration: 1,
-        ease: "power2.out",
+    let h1split = SplitText.create("h1", {
+        type: "words,chars",
+        wordsClass: "word",
+        charsClass: "char",
+        autoSplit: true,
+        onSplit: (self) => {
+            return gsap.from(self.chars, {
+                opacity: 0,
+                y: 50,
+                stagger: 0.05,
+                duration: 0.5,
+            });
+        },
     });
 
     // Typewriter effect
